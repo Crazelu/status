@@ -162,4 +162,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseGoOnYourDesktop => 'Please go on your desktop';
+
+  @override
+  String get meeting => 'Meeting';
+
+  @override
+  String get focusedWork => 'Focused Work';
+
+  @override
+  String get holiday => 'Holiday';
+
+  @override
+  String get offSick => 'Off Sick';
+
+  @override
+  String get personalSchedule => 'Personal Schedule';
+
+  @override
+  String get to => 'to';
 }

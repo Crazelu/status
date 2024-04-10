@@ -1,3 +1,3 @@
 class DialogRoutes {
-  static const error = '/error';
+  static const eventDetails = '/eventDetails';
 }

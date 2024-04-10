@@ -33,6 +33,7 @@ class Date extends Equatable {
   final int weekday;
 
   String get formattedDate => '$dayName, $ordinalDay $month, $year';
+  String get formattedDateWithoutYear => '$dayName, $ordinalDay $month';
 
   static String _getMonth(int month, AppLocalizations locale) {
     return switch (month) {

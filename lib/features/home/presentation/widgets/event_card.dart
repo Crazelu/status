@@ -7,9 +7,11 @@ class EventCard extends StatelessWidget {
   const EventCard({
     super.key,
     required this.event,
+    this.onPressed,
   });
 
   final Event event;
+  final VoidCallback? onPressed;
 
   double get _height {
     final endTimeInHours = event.endTime.totalTimeInHours;
@@ -22,30 +24,41 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: _height,
       width: MediaQuery.sizeOf(context).width * 0.118,
-      padding: const EdgeInsets.symmetric(horizontal: 12).copyWith(top: 8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+      child: Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
         color: event.eventType.color,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AutoSizeText(
-            event.title,
-            maxLines: 1,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12).copyWith(top: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AutoSizeText(
+                  event.title,
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
+                AutoSizeText(
+                  '${event.startTime} - ${event.endTime}',
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           ),
-          AutoSizeText(
-            '${event.startTime} - ${event.endTime}',
-            maxLines: 1,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ],
+        ),
       ),
     );
   }

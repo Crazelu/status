@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_dialog_manager/flutter_dialog_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:status/core/dialog/dialog_routes.dart';
+import 'package:status/features/home/data/models/date.dart';
 import 'package:status/features/home/data/models/event.dart';
+import 'package:status/features/home/presentation/dialogs/event_details_dialog.dart';
 import 'package:status/features/home/presentation/viewmodels/home_view_model.dart';
 import 'package:status/features/home/presentation/widgets/event_card.dart';
 
@@ -56,6 +60,7 @@ class _EventsGridState extends State<EventsGrid> {
         Future.microtask(() => _getEventsPerDay(events));
         return LayoutBuilder(
           builder: (context, constraints) {
+            final dates = context.read<HomeViewModel>().dates.value;
             return ConstrainedBox(
               constraints: BoxConstraints(
                 minWidth: windowWidth,
@@ -67,7 +72,10 @@ class _EventsGridState extends State<EventsGrid> {
                     Positioned.fill(
                       left: (events.$1 * windowWidth * 0.132) +
                           windowWidth * 0.012,
-                      child: EventsColumn(events: events.$2),
+                      child: EventsColumn(
+                        events: events.$2,
+                        date: dates[events.$1],
+                      ),
                     )
                 ],
               ),
@@ -83,9 +91,11 @@ class EventsColumn extends StatelessWidget {
   const EventsColumn({
     super.key,
     required this.events,
+    required this.date,
   });
 
   final List<Event> events;
+  final Date date;
 
   double _calculateDistance(EventTime end, EventTime start) {
     final endTimeHour = end.totalTimeInHours;
@@ -108,7 +118,18 @@ class EventsColumn extends StatelessWidget {
           Positioned(
             top: _calculateDistance(item.$2.startTime, range.start) +
                 (item.$1 == 0 ? 20 : 12),
-            child: EventCard(event: item.$2),
+            child: EventCard(
+              event: item.$2,
+              onPressed: () {
+                DialogManager.of(context).showDialog(
+                  routeName: DialogRoutes.eventDetails,
+                  arguments: EventDetailsDialogMessage(
+                    event: item.$2,
+                    date: date,
+                  ),
+                );
+              },
+            ),
           ),
         }
       ],

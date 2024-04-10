@@ -408,6 +408,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please go on your desktop'**
   String get pleaseGoOnYourDesktop;
+
+  /// No description provided for @meeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Meeting'**
+  String get meeting;
+
+  /// No description provided for @focusedWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Focused Work'**
+  String get focusedWork;
+
+  /// No description provided for @holiday.
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday'**
+  String get holiday;
+
+  /// No description provided for @offSick.
+  ///
+  /// In en, this message translates to:
+  /// **'Off Sick'**
+  String get offSick;
+
+  /// No description provided for @personalSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Schedule'**
+  String get personalSchedule;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'to'**
+  String get to;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
