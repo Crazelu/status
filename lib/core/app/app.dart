@@ -2,10 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dialog_manager/flutter_dialog_manager.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:status/core/localization/app_localizations.dart';
 import 'package:status/core/navigation/navigation_listener.dart';
 import 'package:status/core/dialog/dialog_generator.dart';
 import 'package:status/core/dialog/dialog_handler.dart';
+import 'package:status/core/presentation/themes/day_card_theme.dart';
 import 'package:status/core/routes/route_generator.dart';
 import 'package:status/core/routes/routes.dart';
 import 'package:status/core/presentation/widgets/footer.dart';
@@ -24,6 +28,7 @@ class _StatusAppState extends State<StatusApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    final textTheme = Theme.of(context).textTheme;
 
     return DialogManager(
       dialogKey: GetIt.I<DialogHandler>().dialogKey,
@@ -32,8 +37,22 @@ class _StatusAppState extends State<StatusApp> {
       child: MaterialApp(
         scrollBehavior: const _StatusScrollBehavior(),
         title: 'Status',
+        theme: ThemeData(
+          extensions: <ThemeExtension>{
+            DayCardTheme.defaultTheme(),
+          },
+          colorScheme: const ColorScheme.light(),
+          textTheme: GoogleFonts.quicksandTextTheme(textTheme),
+        ),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('en')],
         onGenerateRoute: RouteGenerator.onGenerateRoute,
-        initialRoute: Routes.splashScreen,
+        initialRoute: Routes.home,
         navigatorKey: _navigatorKey,
         builder: (_, child) => NavigationListener(
           navigatorKey: _navigatorKey,

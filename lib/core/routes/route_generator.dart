@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:status/core/routes/routes.dart';
-import 'package:status/screens.dart';
+import 'package:status/pages.dart';
 
 class RouteGenerator {
   /// Generates routes, extracts and passes navigation arguments.
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.splashScreen:
+      case Routes.home:
         return _getPageRoute(
-          const SplashScreen(),
-          Routes.splashScreen,
+          const HomePage(),
+          Routes.home,
         );
 
       default:
