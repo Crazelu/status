@@ -8,6 +8,7 @@ class Date extends Equatable {
     required this.month,
     required this.year,
     required this.ordinalDay,
+    required this.weekday,
   });
 
   factory Date.fromDatetime({
@@ -20,6 +21,7 @@ class Date extends Equatable {
       month: _getMonth(date.month, locale),
       year: date.year.toString(),
       ordinalDay: _getOrdinalDate(date.day, locale),
+      weekday: date.weekday,
     );
   }
 
@@ -28,6 +30,7 @@ class Date extends Equatable {
   final String month;
   final String year;
   final String ordinalDay;
+  final int weekday;
 
   String get formattedDate => '$dayName, $ordinalDay $month, $year';
 
@@ -106,5 +109,6 @@ class Date extends Equatable {
         month,
         year,
         ordinalDay,
+        weekday,
       ];
 }

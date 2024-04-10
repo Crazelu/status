@@ -44,8 +44,11 @@ class DateHeader extends StatelessWidget {
 
               return Row(
                 children: [
-                  PhosphorIcon(
-                    PhosphorIcons.calendar(),
+                  InkWell(
+                    onTap: viewModel.resetSelectedWeekday,
+                    child: PhosphorIcon(
+                      PhosphorIcons.calendar(),
+                    ),
                   ),
                   const Spacer(),
                   for (final item in dates.indexed) ...{

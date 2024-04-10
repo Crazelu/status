@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:status/features/home/data/models/event.dart';
+import 'package:provider/provider.dart';
+import 'package:status/features/home/presentation/viewmodels/home_view_model.dart';
 
 class TimePanel extends StatefulWidget {
-  const TimePanel({
-    super.key,
-    required this.from,
-    required this.to,
-  });
-
-  final EventTime from;
-  final EventTime to;
+  const TimePanel({super.key});
 
   @override
   State<TimePanel> createState() => _TimePanelState();
@@ -19,7 +13,9 @@ class _TimePanelState extends State<TimePanel> {
   final List<String> _timeSlots = [];
 
   void _createTimeSlots() {
-    for (int i = widget.from.hour; i <= widget.to.hour; i++) {
+    final range = context.read<HomeViewModel>().timeRange.value;
+
+    for (int i = range.start.hour; i <= range.end.hour; i++) {
       _timeSlots.add('${i / 12 <= 1 ? i : i % 12} ${i / 12 < 1 ? 'am' : 'pm'}');
     }
     setState(() {});
