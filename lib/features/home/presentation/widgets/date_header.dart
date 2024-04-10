@@ -47,7 +47,7 @@ class DateHeader extends StatelessWidget {
                   InkWell(
                     onTap: viewModel.resetSelectedWeekday,
                     child: PhosphorIcon(
-                      PhosphorIcons.calendar(),
+                      PhosphorIcons.calendarBlank(),
                     ),
                   ),
                   const Spacer(),
