@@ -39,7 +39,19 @@ class HomeViewModel extends BaseViewModel {
     Event.recurOnWeekdays(
       title: 'Focused Work',
       startTime: const EventTime(hour: 11),
-      endTime: const EventTime(hour: 15, minutes: 30),
+      endTime: const EventTime(hour: 13, minutes: 30),
+      eventType: EventType.focusedWork,
+    ),
+    Event.recurOnWeekdays(
+      title: 'Lunch Break',
+      startTime: const EventTime(hour: 13, minutes: 30),
+      endTime: const EventTime(hour: 14, minutes: 15),
+      eventType: EventType.privateTime,
+    ),
+    Event.recurOnWeekdays(
+      title: 'Focused Work',
+      startTime: const EventTime(hour: 14, minutes: 15),
+      endTime: const EventTime(hour: 16, minutes: 00),
       eventType: EventType.focusedWork,
     ),
     Event.recurOnWeekdays(

@@ -139,7 +139,7 @@ class _EventTypeCard extends StatelessWidget {
         vertical: 8,
       ),
       decoration: BoxDecoration(
-        color: eventType.color.withOpacity(0.4),
+        color: eventType.cardColor.withOpacity(0.4),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
