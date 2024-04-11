@@ -7,7 +7,6 @@ import 'package:status/core/dialog/dialog_handler.dart';
 import 'package:status/core/io/api_client.dart';
 import 'package:status/core/io/logging_interceptor.dart';
 import 'package:status/core/environment.dart';
-import 'package:status/features/home/data/repositories/calendar_repository.dart';
 
 class DependencyRegistry {
   DependencyRegistry._();
@@ -40,10 +39,6 @@ class DependencyRegistry {
         baseUrl: Environment.baseUrl,
         interceptors: [LoggingInterceptor()],
       ),
-    );
-
-    GetIt.I.registerLazySingleton<CalendarRepository>(
-      () => CalendarRepository(),
     );
   }
 }
