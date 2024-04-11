@@ -6,3 +6,4 @@ Visit [here](https://status.luckyebere.com)
 ## Resources
 
 - [Creating custom MaterialLocalizationsDelegate for your locale](https://github.com/flutter/website/blob/archived-master/examples/internationalization/add_language/lib/nn_intl.dart)
+- [Design Inspo](https://dribbble.com/shots/23668161-Calendar-Dashboard-Design-Concept)
