@@ -37,8 +37,8 @@ class _LocaleCard extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(right: 2),
           child: SizedBox(
-            height: 40,
-            width: 40,
+            height: 32,
+            width: 32,
             child: Material(
               color: selected
                   ? theme.selectedBackgroundColor
@@ -59,6 +59,7 @@ class _LocaleCard extends StatelessWidget {
                   child: Text(
                     locale.languageCode.toUpperCase(),
                     style: TextStyle(
+                      fontSize: 12,
                       color: selected
                           ? theme.selectedPrimaryTextColor
                           : theme.unselectedPrimaryTextColor,
