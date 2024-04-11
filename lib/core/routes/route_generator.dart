@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:status/core/routes/routes.dart';
 import 'package:status/pages.dart';
@@ -18,13 +17,13 @@ class RouteGenerator {
     }
   }
 
-  /// Wraps widget with a CupertinoPageRoute and adds route settings
-  static CupertinoPageRoute _getPageRoute(
+  /// Wraps widget with a MaterialPageRoute and adds route settings
+  static MaterialPageRoute _getPageRoute(
     Widget child, [
     String? routeName,
     dynamic args,
   ]) =>
-      CupertinoPageRoute(
+      MaterialPageRoute(
         builder: (context) => child,
         settings: RouteSettings(
           name: routeName,
