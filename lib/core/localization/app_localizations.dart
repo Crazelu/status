@@ -470,6 +470,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Lucky\'s Status'**
   String get luckysStatus;
+
+  /// No description provided for @workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout'**
+  String get workout;
+
+  /// No description provided for @lunchBreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Lunch Break'**
+  String get lunchBreak;
+
+  /// No description provided for @scheduleAMeeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a Meetig'**
+  String get scheduleAMeeting;
+
+  /// No description provided for @endOfWeekSync.
+  ///
+  /// In en, this message translates to:
+  /// **'End of Week Sync'**
+  String get endOfWeekSync;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -10,7 +10,7 @@ class HomeViewModel extends BaseViewModel {
 
   final AppLocalizations locale;
 
-  final List<Event> _dummyEvents = [
+  late final List<Event> _dummyEvents = [
     Event.neverRecur(
       title: 'Standup',
       startTime: const EventTime(hour: 9),
@@ -37,38 +37,38 @@ class HomeViewModel extends BaseViewModel {
       eventType: EventType.meeting,
     ),
     Event.recurOnWeekdays(
-      title: 'Focused Work',
+      title: locale.focusedWork,
       startTime: const EventTime(hour: 11),
       endTime: const EventTime(hour: 13, minutes: 30),
       eventType: EventType.focusedWork,
     ),
     Event.recurOnWeekdays(
-      title: 'Lunch Break',
+      title: locale.lunchBreak,
       startTime: const EventTime(hour: 13, minutes: 30),
       endTime: const EventTime(hour: 14, minutes: 15),
       eventType: EventType.privateTime,
     ),
     Event.recurOnWeekdays(
-      title: 'Focused Work',
+      title: locale.focusedWork,
       startTime: const EventTime(hour: 14, minutes: 15),
       endTime: const EventTime(hour: 16, minutes: 00),
       eventType: EventType.focusedWork,
     ),
     Event.recurOnWeekdays(
-      title: 'Workout',
+      title: locale.workout,
       startTime: const EventTime(hour: 6, minutes: 30),
       endTime: const EventTime(hour: 8),
       eventType: EventType.privateTime,
     ),
     Event.neverRecur(
-      title: 'Workout',
+      title: locale.workout,
       startTime: const EventTime(hour: 7),
       endTime: const EventTime(hour: 10),
       eventType: EventType.privateTime,
       weekday: WeekDay.saturday,
     ),
     Event.neverRecur(
-      title: 'End of Week Sync',
+      title: locale.endOfWeekSync,
       startTime: const EventTime(hour: 16, minutes: 30),
       endTime: const EventTime(hour: 17),
       eventType: EventType.meeting,
@@ -82,7 +82,7 @@ class HomeViewModel extends BaseViewModel {
       weekday: WeekDay.wednesday,
     ),
     Event.neverRecur(
-      title: 'Schedule a Meeting',
+      title: locale.scheduleAMeeting,
       startTime: const EventTime(hour: 16, minutes: 30),
       endTime: const EventTime(hour: 17),
       eventType: EventType.scheduleMeeting,
@@ -91,7 +91,7 @@ class HomeViewModel extends BaseViewModel {
       venue: 'Google Meet',
     ),
     Event.neverRecur(
-      title: 'Schedule a Meeting',
+      title: locale.scheduleAMeeting,
       startTime: const EventTime(hour: 17, minutes: 30),
       endTime: const EventTime(hour: 18),
       eventType: EventType.scheduleMeeting,
@@ -100,7 +100,7 @@ class HomeViewModel extends BaseViewModel {
       venue: 'Google Meet',
     ),
     Event.neverRecur(
-      title: 'Schedule a Meeting',
+      title: locale.scheduleAMeeting,
       startTime: const EventTime(hour: 18, minutes: 15),
       endTime: const EventTime(hour: 18, minutes: 45),
       eventType: EventType.scheduleMeeting,

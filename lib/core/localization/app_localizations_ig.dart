@@ -192,4 +192,16 @@ class AppLocalizationsIg extends AppLocalizations {
 
   @override
   String get luckysStatus => 'Kalenda Lucky';
+
+  @override
+  String get workout => 'Mmega ahụ';
+
+  @override
+  String get lunchBreak => 'Oge nri ehihie';
+
+  @override
+  String get scheduleAMeeting => 'Hazie Nzukọ';
+
+  @override
+  String get endOfWeekSync => 'Nzukọ ogwụcha izu';
 }

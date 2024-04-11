@@ -31,7 +31,7 @@ class EventCard extends StatelessWidget {
       children: [
         AutoSizeText(
           event.title,
-          maxLines: 1,
+          maxLines: _height / 110 <= 1 ? 1 : 2,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

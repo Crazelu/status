@@ -192,4 +192,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get luckysStatus => 'Lucky\'s Status';
+
+  @override
+  String get workout => 'Workout';
+
+  @override
+  String get lunchBreak => 'Lunch Break';
+
+  @override
+  String get scheduleAMeeting => 'Schedule a Meetig';
+
+  @override
+  String get endOfWeekSync => 'End of Week Sync';
 }

@@ -65,5 +65,9 @@
   "schedule": "Schedule",
   "minimumNotice": "Minimum Notice",
   "fourHours": "4 hours",
-  "luckysStatus": "Lucky's Status"
+  "luckysStatus": "Lucky's Status",
+  "workout": "Workout",
+  "lunchBreak": "Lunch Break",
+  "scheduleAMeeting": "Schedule a Meetig",
+  "endOfWeekSync": "End of Week Sync"
 }
