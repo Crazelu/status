@@ -2,7 +2,7 @@
     "@@locale": "ig",
     "language": "Igbo",
     "@language": {
-        "description": "asụsụ dị ugbua"
+        "description": "asụsụ Igbo"
     },
     "monday": "Mọndè",
     "tuesday": "Tuzdee",
@@ -54,8 +54,6 @@
     "twentyNinth": "29th",
     "thirtieth": "30th",
     "thirtyFirst": "31st",
-    "sorryDudeButTheresNoWayImLettingYouViewThisOnYourMobile": "Bia nwokem enweghị m ike igosi gị ihe a na ebe a.",
-    "pleaseGoOnYourDesktop": "Biko, ga na kọmputa gị",
     "meeting": "Nzukọ",
     "focusedWork": "Oge ilekwasị anya na ọru",
     "holiday": "Ezumike",

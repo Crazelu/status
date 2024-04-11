@@ -2,7 +2,7 @@
   "@@locale": "en",
   "language": "English",
   "@language": {
-    "description": "The current language"
+    "description": "The current language is English"
   },
   "monday": "Monday",
   "tuesday": "Tuesday",
@@ -54,8 +54,6 @@
   "twentyNinth": "29th",
   "thirtieth": "30th",
   "thirtyFirst": "31st",
-  "sorryDudeButTheresNoWayImLettingYouViewThisOnYourMobile": "Sorry dude but there's no way I'm letting you view this on your mobile.",
-  "pleaseGoOnYourDesktop": "Please go on your desktop",
   "meeting": "Meeting",
   "focusedWork": "Focused Work",
   "holiday": "Holiday",

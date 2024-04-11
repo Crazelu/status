@@ -158,12 +158,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get thirtyFirst => '31st';
 
   @override
-  String get sorryDudeButTheresNoWayImLettingYouViewThisOnYourMobile => 'Sorry dude but there\'s no way I\'m letting you view this on your mobile.';
-
-  @override
-  String get pleaseGoOnYourDesktop => 'Please go on your desktop';
-
-  @override
   String get meeting => 'Meeting';
 
   @override

@@ -93,7 +93,7 @@ abstract class AppLocalizations {
     Locale('ig')
   ];
 
-  /// The current language
+  /// The current language is English
   ///
   /// In en, this message translates to:
   /// **'English'**
@@ -398,18 +398,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'31st'**
   String get thirtyFirst;
-
-  /// No description provided for @sorryDudeButTheresNoWayImLettingYouViewThisOnYourMobile.
-  ///
-  /// In en, this message translates to:
-  /// **'Sorry dude but there\'s no way I\'m letting you view this on your mobile.'**
-  String get sorryDudeButTheresNoWayImLettingYouViewThisOnYourMobile;
-
-  /// No description provided for @pleaseGoOnYourDesktop.
-  ///
-  /// In en, this message translates to:
-  /// **'Please go on your desktop'**
-  String get pleaseGoOnYourDesktop;
 
   /// No description provided for @meeting.
   ///

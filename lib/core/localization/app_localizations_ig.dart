@@ -158,12 +158,6 @@ class AppLocalizationsIg extends AppLocalizations {
   String get thirtyFirst => '31st';
 
   @override
-  String get sorryDudeButTheresNoWayImLettingYouViewThisOnYourMobile => 'Bia nwokem enweghị m ike igosi gị ihe a na ebe a.';
-
-  @override
-  String get pleaseGoOnYourDesktop => 'Biko, ga na kọmputa gị';
-
-  @override
   String get meeting => 'Nzukọ';
 
   @override
