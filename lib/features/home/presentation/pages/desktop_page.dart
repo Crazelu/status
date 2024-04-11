@@ -48,7 +48,7 @@ class HomeDesktopPage extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

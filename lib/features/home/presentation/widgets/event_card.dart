@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:status/core/presentation/widgets/responsive_builder.dart';
 import 'package:status/features/home/data/models/event.dart';
 import 'package:status/features/home/presentation/extensions/event_type_extension.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -70,7 +71,7 @@ class EventCard extends StatelessWidget {
 
     return SizedBox(
       height: _height,
-      width: MediaQuery.sizeOf(context).width * 0.118,
+      width: MediaQuery.sizeOf(context).width * (0.118, 0.32).resolve,
       child: Material(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),

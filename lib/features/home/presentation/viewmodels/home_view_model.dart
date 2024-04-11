@@ -180,6 +180,17 @@ class HomeViewModel extends BaseViewModel {
     _selectedWeekday.value = date.weekday;
   }
 
+  List<Event> getEventsForWeekDay(int weekday) {
+    final events = _dummyEvents
+        .where(
+          (e) => e.weekdays.contains(weekday) || e.day?.weekday == weekday,
+        )
+        .toList();
+
+    _sortAndSetEvents(events);
+    return events;
+  }
+
   void resetSelectedWeekday() {
     _selectedWeekday.value = null;
     _sortAndSetEvents(_dummyEvents);
