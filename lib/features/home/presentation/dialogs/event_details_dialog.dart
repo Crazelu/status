@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dialog_manager/flutter_dialog_manager.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:status/core/extensions/locale_extension.dart';
+import 'package:status/core/presentation/widgets/responsive_builder.dart';
 import 'package:status/features/home/data/models/date.dart';
 import 'package:status/features/home/data/models/event.dart';
 import 'package:status/features/home/presentation/extensions/event_type_extension.dart';
@@ -34,7 +35,7 @@ class EventDetailsDialog extends StatelessWidget {
       builder: (dialogKey) {
         return Container(
           key: dialogKey,
-          width: 400,
+          width: (400.0, MediaQuery.sizeOf(context).width * 0.85).resolve,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
           decoration: BoxDecoration(
             color: Colors.white,

@@ -71,7 +71,7 @@ class EventCard extends StatelessWidget {
 
     return SizedBox(
       height: _height,
-      width: MediaQuery.sizeOf(context).width * (0.118, 0.32).resolve,
+      width: MediaQuery.sizeOf(context).width * (0.118, 0.42).resolve,
       child: Material(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),

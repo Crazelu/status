@@ -27,7 +27,7 @@ class DayCard extends StatelessWidget {
 
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxHeight: (92.0, 72.0).resolve,
+        maxHeight: (92.0, 60.0).resolve,
         maxWidth: 148,
       ),
       child: Material(
@@ -57,7 +57,7 @@ class DayCard extends StatelessWidget {
                       : theme.unselectedSecondaryTextColor,
                 ),
               ),
-              SizedBox(height: (0.0, 4.0).resolve),
+              SizedBox(height: (0.0, 2.0).resolve),
               Text(
                 date.day,
                 style: TextStyle(
