@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mockito/mockito.dart';
 import 'package:status/core/app/app.dart';
+import 'package:status/core/data/local_cache.dart';
 import 'package:status/core/dialog/dialog_handler.dart';
+import 'package:status/core/localization/localization_manager.dart';
 import 'package:status/core/navigation/navigation_bus.dart';
 import 'package:status/core/localization/app_localizations_en.dart';
 import 'package:status/pages.dart';
@@ -20,10 +22,15 @@ void main() {
       GetIt.I.registerSingleton<NavigationBus>(
         MockNavigationBus(),
       );
+      GetIt.I.registerSingleton<LocalCache>(
+        MockLocalCache(),
+      );
     },
   );
   testWidgets('StatusApp test', (WidgetTester tester) async {
     when(GetIt.I<DialogHandler>().dialogKey).thenReturn(GlobalKey());
+    when(GetIt.I<LocalCache>().getFromCache(LocalizationManager.localeKey))
+        .thenReturn(null);
 
     emulateDesktopScreenSize(tester);
 

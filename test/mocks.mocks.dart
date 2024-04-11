@@ -8,6 +8,8 @@ import 'dart:ui' as _i5;
 
 import 'package:flutter/widgets.dart' as _i1;
 import 'package:mockito/mockito.dart' as _i2;
+import 'package:mockito/src/dummies.dart' as _i9;
+import 'package:status/core/data/local_cache.dart' as _i8;
 import 'package:status/core/dialog/dialog_handler.dart' as _i3;
 import 'package:status/core/navigation/navigation_bus.dart' as _i6;
 import 'package:status/core/navigation/navigation_intent.dart' as _i7;
@@ -109,4 +111,106 @@ class MockNavigationBus extends _i2.Mock implements _i6.NavigationBus {
         ),
         returnValueForMissingStub: null,
       );
+}
+
+/// A class which mocks [LocalCache].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLocalCache extends _i2.Mock implements _i8.LocalCache {
+  @override
+  _i4.Future<String> getToken() => (super.noSuchMethod(
+        Invocation.method(
+          #getToken,
+          [],
+        ),
+        returnValue: _i4.Future<String>.value(_i9.dummyValue<String>(
+          this,
+          Invocation.method(
+            #getToken,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<String>.value(_i9.dummyValue<String>(
+          this,
+          Invocation.method(
+            #getToken,
+            [],
+          ),
+        )),
+      ) as _i4.Future<String>);
+
+  @override
+  _i4.Future<void> saveToken(String? tokenId) => (super.noSuchMethod(
+        Invocation.method(
+          #saveToken,
+          [tokenId],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> deleteToken() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteToken,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> saveToCache({
+    required String? key,
+    required dynamic value,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveToCache,
+          [],
+          {
+            #key: key,
+            #value: value,
+          },
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  T? getFromCache<T>(
+    String? key, [
+    T Function(dynamic)? parser,
+  ]) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFromCache,
+          [
+            key,
+            parser,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      ) as T?);
+
+  @override
+  _i4.Future<void> removeFromCache(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #removeFromCache,
+          [key],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<void> clearCache() => (super.noSuchMethod(
+        Invocation.method(
+          #clearCache,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }

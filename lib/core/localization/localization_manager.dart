@@ -7,7 +7,7 @@ class LocalizationManager extends BaseViewModel {
   LocalizationManager({required LocalCache cache}) : _cache = cache;
 
   final LocalCache _cache;
-  static const _localeKey = '@@__@@Locale';
+  static const localeKey = '@@__@@Locale';
 
   final ValueNotifier<Locale> _currentLocale =
       ValueNotifier(const Locale('en'));
@@ -20,7 +20,7 @@ class LocalizationManager extends BaseViewModel {
 
   @override
   void initialize() {
-    final languageCode = _cache.getFromCache<String?>(_localeKey) ?? 'en';
+    final languageCode = _cache.getFromCache<String?>(localeKey) ?? 'en';
     final locale = Locale(languageCode);
     _currentLocale.value = locale;
     _currentLocalizations.value = lookupAppLocalizations(locale);
@@ -29,7 +29,7 @@ class LocalizationManager extends BaseViewModel {
   Future<void> changeLocale(Locale locale) {
     _currentLocalizations.value = lookupAppLocalizations(locale);
     _currentLocale.value = locale;
-    return _cache.saveToCache(key: _localeKey, value: locale.languageCode);
+    return _cache.saveToCache(key: localeKey, value: locale.languageCode);
   }
 
   @override

@@ -60,25 +60,30 @@ class _EventsGridState extends State<EventsGrid> {
         Future.microtask(() => _getEventsPerDay(events));
         return LayoutBuilder(
           builder: (context, constraints) {
-            final dates = context.read<HomeViewModel>().dates.value;
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: windowWidth,
-                minHeight: constraints.maxHeight,
-              ),
-              child: Stack(
-                children: [
-                  for (final events in _eventsPerDay.indexed)
-                    Positioned.fill(
-                      left: (events.$1 * windowWidth * 0.132) +
-                          windowWidth * 0.012,
-                      child: EventsColumn(
-                        events: events.$2,
-                        date: dates[events.$1],
-                      ),
-                    )
-                ],
-              ),
+            return ValueListenableBuilder(
+              valueListenable: context.read<HomeViewModel>().dates,
+              builder: (context, dates, _) {
+                if (dates.isEmpty) return const SizedBox.shrink();
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: windowWidth,
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: Stack(
+                    children: [
+                      for (final events in _eventsPerDay.indexed)
+                        Positioned.fill(
+                          left: (events.$1 * windowWidth * 0.132) +
+                              windowWidth * 0.012,
+                          child: EventsColumn(
+                            events: events.$2,
+                            date: dates[events.$1],
+                          ),
+                        )
+                    ],
+                  ),
+                );
+              },
             );
           },
         );
