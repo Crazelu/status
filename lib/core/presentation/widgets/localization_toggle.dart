@@ -48,6 +48,7 @@ class _LocaleCard extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
+                  if (locale == currentLocale) return;
                   localizationManager.changeLocale(locale);
                   html.window.location.reload();
                 },
