@@ -1,14 +1,19 @@
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:status/core/localization/app_localizations.dart';
 import 'package:status/core/presentation/viewmodel/base_view_model.dart';
+import 'package:status/core/utils/logger.dart';
 import 'package:status/features/home/data/models/calendar_time_range.dart';
 import 'package:status/features/home/data/models/date.dart';
 import 'package:status/features/home/data/models/event.dart';
+import 'package:status/features/home/data/repositories/calendar_repository.dart';
 
 class HomeViewModel extends BaseViewModel {
   HomeViewModel({required this.locale});
 
   final AppLocalizations locale;
+
+  final _logger = LoggerFactory.getLogger(HomeViewModel);
 
   late final List<Event> _dummyEvents = [
     Event.neverRecur(
@@ -159,6 +164,11 @@ class HomeViewModel extends BaseViewModel {
     );
 
     _sortAndSetEvents(_dummyEvents);
+
+    GetIt.I<CalendarRepository>().getEventsWithDio();
+    GetIt.I<CalendarRepository>().getEvents().then(
+          (value) => _logger.info(value.toString()),
+        );
   }
 
   void _sortAndSetEvents(List<Event> events) {

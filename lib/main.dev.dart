@@ -7,7 +7,7 @@ import 'package:url_strategy/url_strategy.dart';
 void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  AppLogger.configure(showLogs: true);
+  Logger.showLogs();
   await DependencyRegistry.register();
   runApp(const StatusApp());
 }

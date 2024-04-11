@@ -1,48 +1,101 @@
 import 'dart:developer' as dev;
 
-bool _showLogs = false;
-
 class LoggerFactory {
   LoggerFactory._();
 
-  static AppLogger getLogger([Object? scope]) => _Logger(scope?.toString());
+  static Logger getLogger([Object? scope]) => _Logger(scope?.toString());
 }
 
-abstract class AppLogger {
-  AppLogger._();
+abstract class Logger {
+  Logger._();
 
-  static void configure({required bool showLogs}) {
-    _showLogs = showLogs;
+  static bool _canShowLogs = false;
+
+  static void showLogs() {
+    _canShowLogs = true;
   }
 
-  void debug(Object? e) {}
+  static void hideLogs() {
+    _canShowLogs = false;
+  }
 
-  void error(Object? e) {}
+  void info(
+    String message, {
+    Object? error,
+    StackTrace? stackTrace,
+  });
 
-  void severe(Object? e) {}
+  void error(
+    String message, {
+    Object? error,
+    StackTrace? stackTrace,
+  });
+
+  void severe(
+    String message, {
+    Object? error,
+    StackTrace? stackTrace,
+  });
 }
 
-class _Logger implements AppLogger {
+class _Logger implements Logger {
   _Logger([this.scope]);
 
   final String? scope;
 
-  void _log(Object? e) {
-    if (_showLogs) {
-      if (scope != null) {
-        dev.log('$scope: $e');
-      } else {
-        dev.log('$e');
-      }
+  void _log(
+    String message, {
+    int level = 0,
+    Object? error,
+    StackTrace? stackTrace,
+  }) {
+    if (Logger._canShowLogs) {
+      dev.log(
+        message,
+        level: level,
+        error: error,
+        stackTrace: stackTrace,
+        name: scope ?? '',
+      );
     }
   }
 
   @override
-  void debug(Object? e) => _log(e);
+  void info(
+    String message, {
+    Object? error,
+    StackTrace? stackTrace,
+  }) =>
+      _log(
+        message,
+        level: 800,
+        error: error,
+        stackTrace: stackTrace,
+      );
 
   @override
-  void error(Object? e) => _log(e);
+  void error(
+    String message, {
+    Object? error,
+    StackTrace? stackTrace,
+  }) =>
+      _log(
+        message,
+        level: 900,
+        error: error,
+        stackTrace: stackTrace,
+      );
 
   @override
-  void severe(Object? e) => _log(e);
+  void severe(
+    String message, {
+    Object? error,
+    StackTrace? stackTrace,
+  }) =>
+      _log(
+        message,
+        level: 1000,
+        error: error,
+        stackTrace: stackTrace,
+      );
 }

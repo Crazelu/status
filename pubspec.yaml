@@ -27,6 +27,8 @@ dependencies:
   auto_size_text: ^3.0.0
   dotted_border: ^2.1.0
   universal_html: ^2.2.4
+  googleapis: ^13.1.0
+  googleapis_auth: ^1.6.0
 
 dev_dependencies:
   flutter_test:

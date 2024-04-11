@@ -10,6 +10,9 @@ class ApiClient {
         baseUrl: baseUrl,
         connectTimeout: const Duration(seconds: 60),
         receiveTimeout: const Duration(seconds: 60),
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
       ),
     );
     for (final interceptor in interceptors) {
