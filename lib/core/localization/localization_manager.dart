@@ -26,9 +26,9 @@ class LocalizationManager extends BaseViewModel {
     _currentLocalizations.value = lookupAppLocalizations(locale);
   }
 
-  Future<void> changeLocal(Locale locale) {
-    _currentLocale.value = locale;
+  Future<void> changeLocale(Locale locale) {
     _currentLocalizations.value = lookupAppLocalizations(locale);
+    _currentLocale.value = locale;
     return _cache.saveToCache(key: _localeKey, value: locale.languageCode);
   }
 

@@ -37,67 +37,70 @@ class _StatusAppState extends State<StatusApp> {
 
     return ViewModelProvider(
       create: () => LocalizationManager(cache: GetIt.I()),
+      initialize: (vm) => vm.initialize(),
       builder: (context) {
         final localizationManager = context.read<LocalizationManager>();
-        return ValueListenableBuilder(
-          valueListenable: localizationManager.currentLocale,
-          builder: (context, locale, _) {
-            return ValueListenableBuilder(
-              valueListenable: localizationManager.currentLocalizations,
-              builder: (context, localizations, _) {
-                return DialogManager(
-                  dialogKey: GetIt.I<DialogHandler>().dialogKey,
+        return ListenableBuilder(
+          listenable: Listenable.merge([
+            localizationManager.currentLocalizations,
+            localizationManager.currentLocale,
+          ]),
+          builder: (context, _) {
+            final localizations =
+                localizationManager.currentLocalizations.value;
+            final locale = localizationManager.currentLocale.value;
+
+            return DialogManager(
+              dialogKey: GetIt.I<DialogHandler>().dialogKey,
+              navigatorKey: _navigatorKey,
+              onGenerateDialog: DialogGenerator.onGenerateDialog,
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                scrollBehavior: const _StatusScrollBehavior(),
+                title:
+                    localizations?.luckysStatus ?? context.locale.luckysStatus,
+                theme: ThemeData(
+                  extensions: <ThemeExtension>{
+                    DayCardTheme.defaultTheme(),
+                  },
+                  primaryColorLight: Colors.white,
+                  primaryColorDark: Colors.black,
+                  colorScheme: const ColorScheme.light(),
+                  textTheme: GoogleFonts.quicksandTextTheme(textTheme),
+                ),
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  IgMaterialLocalizations.delegate,
+                  IgCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: AppLocalizations.supportedLocales,
+                locale: locale,
+                onGenerateRoute: RouteGenerator.onGenerateRoute,
+                initialRoute: Routes.home,
+                navigatorKey: _navigatorKey,
+                builder: (_, child) => NavigationListener(
                   navigatorKey: _navigatorKey,
-                  onGenerateDialog: DialogGenerator.onGenerateDialog,
-                  child: MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    scrollBehavior: const _StatusScrollBehavior(),
-                    title: localizations?.luckysStatus ??
-                        context.locale.luckysStatus,
-                    theme: ThemeData(
-                      extensions: <ThemeExtension>{
-                        DayCardTheme.defaultTheme(),
-                      },
-                      primaryColorLight: Colors.white,
-                      primaryColorDark: Colors.black,
-                      colorScheme: const ColorScheme.light(),
-                      textTheme: GoogleFonts.quicksandTextTheme(textTheme),
-                    ),
-                    localizationsDelegates: const [
-                      AppLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                      IgMaterialLocalizations.delegate,
-                      IgCupertinoLocalizations.delegate,
+                  child: Stack(
+                    children: [
+                      child!,
+                      if (kIsWeb)
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              bottom: (10.0, 5.0).resolve,
+                              right: (20.0, 20.0).resolve,
+                            ),
+                            child: const Footer(),
+                          ),
+                        ),
                     ],
-                    supportedLocales: AppLocalizations.supportedLocales,
-                    locale: locale,
-                    onGenerateRoute: RouteGenerator.onGenerateRoute,
-                    initialRoute: Routes.home,
-                    navigatorKey: _navigatorKey,
-                    builder: (_, child) => NavigationListener(
-                      navigatorKey: _navigatorKey,
-                      child: Stack(
-                        children: [
-                          child!,
-                          if (kIsWeb)
-                            Align(
-                              alignment: Alignment.bottomRight,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  bottom: (10.0, 5.0).resolve,
-                                  right: (20.0, 20.0).resolve,
-                                ),
-                                child: const Footer(),
-                              ),
-                            )
-                        ],
-                      ),
-                    ),
                   ),
-                );
-              },
+                ),
+              ),
             );
           },
         );

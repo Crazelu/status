@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:status/core/presentation/widgets/localization_toggle.dart';
 import 'package:status/features/home/presentation/viewmodels/home_view_model.dart';
 import 'package:status/features/home/presentation/widgets/day_card.dart';
 
@@ -18,19 +19,22 @@ class DateHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: ValueListenableBuilder(
-              valueListenable: viewModel.selectedDate,
-              builder: (context, selectedDate, _) {
-                return Text(
-                  selectedDate?.formattedDate ?? '',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                );
-              },
-            ),
+          Row(
+            children: [
+              ValueListenableBuilder(
+                valueListenable: viewModel.selectedDate,
+                builder: (context, selectedDate, _) {
+                  return Text(
+                    selectedDate?.formattedDate ?? '',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                  );
+                },
+              ),
+              const Spacer(),
+              const LocalizationToggle(),
+            ],
           ),
           const SizedBox(height: 24),
           ListenableBuilder(

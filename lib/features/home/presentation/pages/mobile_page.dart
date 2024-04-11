@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:status/core/extensions/locale_extension.dart';
+import 'package:status/core/presentation/widgets/localization_toggle.dart';
 
 class HomeMobilePage extends StatelessWidget {
   const HomeMobilePage({super.key});
@@ -7,6 +8,13 @@ class HomeMobilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: const [
+          LocalizationToggle(),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Center(
