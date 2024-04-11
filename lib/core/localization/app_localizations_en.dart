@@ -180,4 +180,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get to => 'to';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get minimumNotice => 'Minimum Notice';
+
+  @override
+  String get fourHours => '4 hours';
 }

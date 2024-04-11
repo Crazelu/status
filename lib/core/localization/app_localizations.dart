@@ -444,6 +444,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'to'**
   String get to;
+
+  /// No description provided for @schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get schedule;
+
+  /// No description provided for @minimumNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum Notice'**
+  String get minimumNotice;
+
+  /// No description provided for @fourHours.
+  ///
+  /// In en, this message translates to:
+  /// **'4 hours'**
+  String get fourHours;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

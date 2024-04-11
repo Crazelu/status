@@ -61,5 +61,8 @@
   "holiday": "Holiday",
   "offSick": "Off Sick",
   "personalSchedule": "Personal Schedule",
-  "to": "to"
+  "to": "to",
+  "schedule": "Schedule",
+  "minimumNotice": "Minimum Notice",
+  "fourHours": "4 hours"
 }

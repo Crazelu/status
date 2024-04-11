@@ -6,6 +6,7 @@ import 'package:status/core/extensions/locale_extension.dart';
 import 'package:status/features/home/data/models/date.dart';
 import 'package:status/features/home/data/models/event.dart';
 import 'package:status/features/home/presentation/extensions/event_type_extension.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetailsDialogMessage extends Equatable {
   const EventDetailsDialogMessage({
@@ -85,11 +86,51 @@ class EventDetailsDialog extends StatelessWidget {
                   ),
                 ],
               ),
+              if (event.venue != null &&
+                  (event.venue?.isNotEmpty ?? false)) ...{
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    PhosphorIcon(
+                      PhosphorIcons.mapPin(),
+                      size: 20,
+                    ),
+                    const SizedBox(width: 8),
+                    _TextContainer(
+                      key: ValueKey(
+                        '${event.venue}_TextContainer',
+                      ),
+                      text: event.venue!,
+                    ),
+                  ],
+                ),
+              },
               const SizedBox(height: 24),
-              _EventTypeCard(
-                key: ValueKey('${event.eventType}_EventTypeCard'),
-                eventType: event.eventType,
-              )
+              if (event.eventType != EventType.scheduleMeeting)
+                _EventTypeCard(
+                  key: ValueKey('${event.eventType}_EventTypeCard'),
+                  eventType: event.eventType,
+                ),
+              if (event.eventType == EventType.scheduleMeeting)
+                TextButton(
+                  style: TextButton.styleFrom(
+                    fixedSize: const Size(400, 48),
+                    backgroundColor: event.eventType.cardColor,
+                    foregroundColor:
+                        event.eventType.cardColor.computeLuminance() > 0.5
+                            ? Theme.of(context).primaryColorDark
+                            : Theme.of(context).primaryColorLight,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(context.locale.schedule),
+                  onPressed: () {
+                    if (event.url != null) {
+                      launchUrl(Uri.parse(event.url!));
+                    }
+                  },
+                ),
             ],
           ),
         );

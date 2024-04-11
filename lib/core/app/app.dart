@@ -41,6 +41,8 @@ class _StatusAppState extends State<StatusApp> {
           extensions: <ThemeExtension>{
             DayCardTheme.defaultTheme(),
           },
+          primaryColorLight: Colors.white,
+          primaryColorDark: Colors.black,
           colorScheme: const ColorScheme.light(),
           textTheme: GoogleFonts.quicksandTextTheme(textTheme),
         ),

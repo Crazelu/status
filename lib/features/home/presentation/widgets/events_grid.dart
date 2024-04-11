@@ -97,12 +97,13 @@ class EventsColumn extends StatelessWidget {
   final List<Event> events;
   final Date date;
 
-  double _calculateDistance(EventTime end, EventTime start) {
+  double _calculateDistance(EventTime end, EventTime start,
+      [bool adjust = false]) {
     final endTimeHour = end.totalTimeInHours;
     double hours = endTimeHour - start.totalTimeInHours;
 
     if (endTimeHour >= 12) {
-      hours -= 0.35;
+      hours -= adjust ? 0.45 : 0.35;
     }
 
     return hours * 110;
@@ -116,7 +117,8 @@ class EventsColumn extends StatelessWidget {
       children: [
         for (final item in events.indexed) ...{
           Positioned(
-            top: _calculateDistance(item.$2.startTime, range.start) +
+            top: _calculateDistance(
+                    item.$2.startTime, range.start, item.$1 == 0) +
                 (item.$1 == 0 ? 20 : 12),
             child: EventCard(
               event: item.$2,

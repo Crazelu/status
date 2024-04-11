@@ -81,6 +81,33 @@ class HomeViewModel extends BaseViewModel {
       eventType: EventType.meeting,
       weekday: WeekDay.wednesday,
     ),
+    Event.neverRecur(
+      title: 'Schedule a Meeting',
+      startTime: const EventTime(hour: 16, minutes: 30),
+      endTime: const EventTime(hour: 17),
+      eventType: EventType.scheduleMeeting,
+      weekday: WeekDay.saturday,
+      eventLink: 'https://calendly.com/crazelu/meet-with-lucky-a',
+      venue: 'Google Meet',
+    ),
+    Event.neverRecur(
+      title: 'Schedule a Meeting',
+      startTime: const EventTime(hour: 17, minutes: 30),
+      endTime: const EventTime(hour: 18),
+      eventType: EventType.scheduleMeeting,
+      weekday: WeekDay.sunday,
+      eventLink: 'https://calendly.com/crazelu/meet-with-lucky-a',
+      venue: 'Google Meet',
+    ),
+    Event.neverRecur(
+      title: 'Schedule a Meeting',
+      startTime: const EventTime(hour: 18, minutes: 15),
+      endTime: const EventTime(hour: 18, minutes: 45),
+      eventType: EventType.scheduleMeeting,
+      weekday: WeekDay.sunday,
+      eventLink: 'https://calendly.com/crazelu/meet-with-lucky-a',
+      venue: 'Google Meet',
+    ),
   ];
 
   static const _range = CalendarTimeRange(

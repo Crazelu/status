@@ -24,6 +24,8 @@ class Event extends Equatable {
     this.weekdays = const [],
     this.recurringPattern = RecurringEventPattern.never,
     this.day,
+    this.url,
+    this.venue,
   }) : assert(
           day != null || weekdays != const [],
           'day or non empty weekdays must be provided',
@@ -88,6 +90,8 @@ class Event extends Equatable {
     required EventTime startTime,
     required EventTime endTime,
     required EventType eventType,
+    String? venue,
+    String? eventLink,
     DateTime? day,
     WeekDay? weekday,
   }) {
@@ -97,6 +101,8 @@ class Event extends Equatable {
       endTime: endTime,
       eventType: eventType,
       day: day,
+      url: eventLink,
+      venue: venue,
       recurringPattern: RecurringEventPattern.never,
       weekdays: [if (weekday != null) weekday.value],
     );
@@ -109,6 +115,8 @@ class Event extends Equatable {
   final EventTime endTime;
   final EventType eventType;
   final RecurringEventPattern recurringPattern;
+  final String? url;
+  final String? venue;
 
   @override
   List<Object?> get props => [
@@ -119,6 +127,8 @@ class Event extends Equatable {
         eventType,
         recurringPattern,
         weekdays,
+        url,
+        venue,
       ];
 }
 
@@ -128,6 +138,7 @@ enum EventType {
   holiday,
   offSick,
   privateTime,
+  scheduleMeeting,
 }
 
 class EventTime extends Equatable {
