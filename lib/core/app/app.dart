@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:status/core/extensions/locale_extension.dart';
+import 'package:status/core/localization/igbo_localization_delegate.dart';
 import 'package:status/core/localization/app_localizations.dart';
 import 'package:status/core/navigation/navigation_listener.dart';
 import 'package:status/core/dialog/dialog_generator.dart';
@@ -36,6 +37,7 @@ class _StatusAppState extends State<StatusApp> {
       navigatorKey: _navigatorKey,
       onGenerateDialog: DialogGenerator.onGenerateDialog,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         scrollBehavior: const _StatusScrollBehavior(),
         title: context.locale.luckysStatus,
         theme: ThemeData(
@@ -49,11 +51,14 @@ class _StatusAppState extends State<StatusApp> {
         ),
         localizationsDelegates: const [
           AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
+          IgMaterialLocalizations.delegate,
+          IgCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const [Locale('en')],
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('ig'),
         onGenerateRoute: RouteGenerator.onGenerateRoute,
         initialRoute: Routes.home,
         navigatorKey: _navigatorKey,
