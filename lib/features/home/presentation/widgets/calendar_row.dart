@@ -42,7 +42,8 @@ class CalendarRow extends StatelessWidget {
                   },
                 ),
               ),
-              if (item.$1 != dates.length - 1) const SizedBox(width: 12),
+              if (item.$1 != dates.length - 1)
+                SizedBox(width: (12.0, 8.0).resolve),
             },
           ],
         );

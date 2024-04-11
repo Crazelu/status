@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:status/core/localization/app_localizations.dart';
 import 'package:status/core/localization/localization_manager.dart';
 import 'package:status/core/presentation/themes/day_card_theme.dart';
+import 'package:status/core/presentation/widgets/responsive_builder.dart';
 import "package:universal_html/html.dart" as html;
 
 class LocalizationToggle extends StatelessWidget {
@@ -35,7 +36,7 @@ class _LocaleCard extends StatelessWidget {
         final selected = currentLocale == locale;
 
         return Padding(
-          padding: const EdgeInsets.only(right: 2),
+          padding: EdgeInsets.only(right: (2.0, 4.0).resolve),
           child: SizedBox(
             height: 32,
             width: 32,
