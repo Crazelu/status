@@ -49,6 +49,21 @@ class EventDetailsDialog extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
+              if (event.eventType == EventType.scheduleMeeting) ...{
+                const SizedBox(height: 8),
+                RichText(
+                  text: TextSpan(
+                    text: context.locale.minimumNotice,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    children: [
+                      const TextSpan(text: ' : '),
+                      TextSpan(
+                        text: context.locale.fourHours,
+                      )
+                    ],
+                  ),
+                ),
+              },
               const SizedBox(height: 16),
               Row(
                 children: [
