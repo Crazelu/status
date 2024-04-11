@@ -462,6 +462,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'4 hours'**
   String get fourHours;
+
+  /// No description provided for @luckysStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Lucky\'s Status'**
+  String get luckysStatus;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

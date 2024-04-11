@@ -64,5 +64,6 @@
   "to": "to",
   "schedule": "Schedule",
   "minimumNotice": "Minimum Notice",
-  "fourHours": "4 hours"
+  "fourHours": "4 hours",
+  "luckysStatus": "Lucky's Status"
 }

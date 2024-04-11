@@ -189,4 +189,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fourHours => '4 hours';
+
+  @override
+  String get luckysStatus => 'Lucky\'s Status';
 }
