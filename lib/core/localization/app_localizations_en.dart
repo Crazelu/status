@@ -200,7 +200,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lunchBreak => 'Lunch Break';
 
   @override
-  String get scheduleAMeeting => 'Schedule a Meetig';
+  String get scheduleAMeeting => 'Schedule a Meeting';
 
   @override
   String get endOfWeekSync => 'End of Week Sync';

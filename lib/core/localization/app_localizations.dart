@@ -486,7 +486,7 @@ abstract class AppLocalizations {
   /// No description provided for @scheduleAMeeting.
   ///
   /// In en, this message translates to:
-  /// **'Schedule a Meetig'**
+  /// **'Schedule a Meeting'**
   String get scheduleAMeeting;
 
   /// No description provided for @endOfWeekSync.
