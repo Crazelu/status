@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:status/core/data/local_cache.dart';
-import 'package:status/core/localization/app_localizations.dart';
 import 'package:status/core/presentation/viewmodel/base_view_model.dart';
 
 class LocalizationManager extends BaseViewModel {
@@ -8,26 +7,21 @@ class LocalizationManager extends BaseViewModel {
 
   final LocalCache _cache;
   static const localeKey = '@@__@@Locale';
+  static const _defaultLocaleLanguageCode = 'en';
 
-  final ValueNotifier<Locale> _currentLocale =
-      ValueNotifier(const Locale('en'));
+  final ValueNotifier<Locale> _currentLocale = ValueNotifier(
+    const Locale(_defaultLocaleLanguageCode),
+  );
   ValueNotifier<Locale> get currentLocale => _currentLocale;
-
-  final ValueNotifier<AppLocalizations?> _currentLocalizations =
-      ValueNotifier(null);
-  ValueNotifier<AppLocalizations?> get currentLocalizations =>
-      _currentLocalizations;
 
   @override
   void initialize() {
-    final languageCode = _cache.getFromCache<String?>(localeKey) ?? 'en';
-    final locale = Locale(languageCode);
-    _currentLocale.value = locale;
-    _currentLocalizations.value = lookupAppLocalizations(locale);
+    final languageCode =
+        _cache.getFromCache<String?>(localeKey) ?? _defaultLocaleLanguageCode;
+    _currentLocale.value = Locale(languageCode);
   }
 
   Future<void> changeLocale(Locale locale) {
-    _currentLocalizations.value = lookupAppLocalizations(locale);
     _currentLocale.value = locale;
     return _cache.saveToCache(key: localeKey, value: locale.languageCode);
   }
@@ -35,7 +29,6 @@ class LocalizationManager extends BaseViewModel {
   @override
   void dispose() {
     _currentLocale.dispose();
-    _currentLocalizations.dispose();
     super.dispose();
   }
 }

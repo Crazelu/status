@@ -40,25 +40,17 @@ class _StatusAppState extends State<StatusApp> {
       initialize: (vm) => vm.initialize(),
       builder: (context) {
         final localizationManager = context.read<LocalizationManager>();
-        return ListenableBuilder(
-          listenable: Listenable.merge([
-            localizationManager.currentLocalizations,
-            localizationManager.currentLocale,
-          ]),
-          builder: (context, _) {
-            final localizations =
-                localizationManager.currentLocalizations.value;
-            final locale = localizationManager.currentLocale.value;
-
+        return ValueListenableBuilder(
+          valueListenable: localizationManager.currentLocale,
+          builder: (context, locale, _) {
             return DialogManager(
               dialogKey: GetIt.I<DialogHandler>().dialogKey,
               navigatorKey: _navigatorKey,
               onGenerateDialog: DialogGenerator.onGenerateDialog,
               child: MaterialApp(
+                onGenerateTitle: (context) => context.locale.luckysStatus,
                 debugShowCheckedModeBanner: false,
                 scrollBehavior: const _StatusScrollBehavior(),
-                title:
-                    localizations?.luckysStatus ?? context.locale.luckysStatus,
                 theme: ThemeData(
                   extensions: <ThemeExtension>{
                     DayCardTheme.defaultTheme(),
