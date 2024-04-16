@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:status/core/environment.dart';
 import 'package:status/core/localization/app_localizations.dart';
 import 'package:status/core/presentation/viewmodel/base_view_model.dart';
 import 'package:status/features/home/data/models/calendar_time_range.dart';
@@ -87,7 +88,7 @@ class HomeViewModel extends BaseViewModel {
       endTime: const EventTime(hour: 17),
       eventType: EventType.scheduleMeeting,
       weekday: WeekDay.saturday,
-      eventLink: 'https://calendly.com/crazelu/meet-with-lucky-a',
+      eventLink: Environment.emailRequest,
       venue: 'Google Meet',
     ),
     Event.neverRecur(
@@ -96,7 +97,7 @@ class HomeViewModel extends BaseViewModel {
       endTime: const EventTime(hour: 18),
       eventType: EventType.scheduleMeeting,
       weekday: WeekDay.sunday,
-      eventLink: 'https://calendly.com/crazelu/meet-with-lucky-a',
+      eventLink: Environment.emailRequest,
       venue: 'Google Meet',
     ),
     Event.neverRecur(
@@ -105,7 +106,7 @@ class HomeViewModel extends BaseViewModel {
       endTime: const EventTime(hour: 18, minutes: 45),
       eventType: EventType.scheduleMeeting,
       weekday: WeekDay.sunday,
-      eventLink: 'https://calendly.com/crazelu/meet-with-lucky-a',
+      eventLink: Environment.emailRequest,
       venue: 'Google Meet',
     ),
   ];

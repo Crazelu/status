@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:status/core/presentation/widgets/responsive_builder.dart';
 import 'package:status/features/home/presentation/viewmodels/home_view_model.dart';
 
 class TimePanel extends StatefulWidget {
@@ -36,7 +37,7 @@ class _TimePanelState extends State<TimePanel> {
           Text(
             time,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: (FontWeight.w600, FontWeight.w400).resolve,
                 ),
           ),
           const SizedBox(height: 60),
